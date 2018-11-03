@@ -7,24 +7,22 @@
 #include <list>
 using namespace std;
 
-int process(char key[256])
-{
-	if (ScreenFlip() != 0) return -1;
-	if (ProcessMessage() != 0) return -1;
-	if (ClearDrawScreen() != 0) return -1;
-	if (GetHitKeyStateAll(key) != 0) return -1;
-	return 0;
+int Process() {
+
+	if (ScreenFlip() == -1) return -1;
+	if (ProcessMessage() == -1) return -1;
+	if (ClearDrawScreen() == -1) return -1;
+	if (SetDrawScreen(DX_SCREEN_BACK) == -1) return -1;
+	if (SetDrawMode(DX_DRAWMODE_BILINEAR) == -1) return -1;
 }
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
 	/*		初期設定		*/
-	ChangeWindowMode(TRUE);
 	SetGraphMode(1216, 672, 16);
-	DxLib_Init();
-	SetBackgroundColor(150, 150, 255);
-	SetDrawScreen(DX_SCREEN_BACK);
-	SetDrawMode(DX_DRAWMODE_BILINEAR);
+	ChangeWindowMode(TRUE);		        	//ウィンドウモードの変更
+	DxLib_Init();			            	//ＤＸライブラリの初期化
+	SetBackgroundColor(0, 0, 0);
 	SetWindowText("BUGGY!!");
 	DxLib_Init();			            	//ＤＸライブラリの初期化
 
@@ -35,13 +33,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	list<Char*>::iterator char_it;
 	chara.push_back(new Player());
 
-	while(process)
+	while(Process() != -1)
 	{
 		world.Draw();
 		ui.Draw();
 		for(char_it = chara.begin(); char_it != chara.end(); char_it++)
 			(*char_it)->Main();
-
+		if (CheckHitKey(KEY_INPUT_LEFT) != 0) DrawBox(100, 100, 100, 100, GetColor(255, 0, 0), TRUE);
 		//debug.Main();
 	}
 

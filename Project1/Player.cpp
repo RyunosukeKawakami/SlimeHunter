@@ -1,15 +1,15 @@
 #include "Player.h"
 #include "DxLib.h"
 
-Player::Player(): RIGHT_MAX(5*32), LEFT_MAX(0), DOWN_MAX(32*6)
+Player::Player(): RIGHT_MAX(5*32), LEFT_MAX(0), DOWN_MAX(32*15)
 {
     p.x = 50;
-    p.y = 32 * 11;
+    p.y = DOWN_MAX;
     p.x2 = p.x + 32;
     p.y2 = p.y + 32;
 	draw = p;
-    speed.x = 10;
-    speed.y = 10;
+    speed.x = 5;
+    speed.y = 5;
     accel = 0;
     vector = STOP;
     hp = 100;
@@ -36,8 +36,8 @@ void Player::Move()
     if( CheckHitKey(KEY_INPUT_LEFT) != 0 ) vector = LEFT;
     if( CheckHitKey(KEY_INPUT_RIGHT) != 0) vector = RIGHT;
 
-    if(vector == LEFT ) p.x -= speed.x;
-    if(vector == RIGHT) p.x += speed.x; 
+    if(vector == LEFT && p.x > LEFT_MAX)  p.x -= speed.x;
+    if(vector == RIGHT&& p.x < RIGHT_MAX) p.x += speed.x; 
 	p.x2 = p.x + 32;
 	p.y2 = p.y + 32;
 	draw = p;
