@@ -14,6 +14,7 @@ Player::Player(): RIGHT_MAX(5*32), LEFT_MAX(0), DOWN_MAX(32*15)
     vector = STOP;
     hp = 100;
     life = 3;
+	attack_f = false;
 	
     image = LoadGraph("Player.png"); 
 }
@@ -21,6 +22,7 @@ Player::Player(): RIGHT_MAX(5*32), LEFT_MAX(0), DOWN_MAX(32*15)
 void Player::Main()
 {
 	Move();
+	Attack();
 	Draw();
 }
 
@@ -57,6 +59,12 @@ void Player::Jump()
 }
 
 void Player::Attack()
-{
-    
+{	
+	if (CheckHitKey(KEY_INPUT_Z) == 1 && attack_f == false)
+	{
+		attack_f = true;
+		main = new Weapon(p);
+		main->Main();
+		printfDx("one");
+	}
 }

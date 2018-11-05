@@ -31,6 +31,9 @@
     <Filter Include="World\Box\Soil">
       <UniqueIdentifier>{c2bdc7ec-48fd-46ac-a12c-6b262f6053a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Wepon">
+      <UniqueIdentifier>{3e2ead4f-74f4-4e5d-be03-592da24de4ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Box.cpp">
@@ -60,6 +63,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="World.cpp">
       <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Wepon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="Soil.h">
       <Filter>World\Box\Soil</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Wepon</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,10 +1,13 @@
 #ifndef _PLAYER_DEFINE_
 #define _PLAYER_DEFINE_
 #include "Char.h"
+#include "Weapon.h"
 
 class Player : public Char{
 private:
     Point speed;
+	Weapon* main;
+	bool attack_f;
     int accel;
     int life;
     int hp;
