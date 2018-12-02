@@ -1,31 +1,50 @@
 #include "Weapon.h"
 
-Weapon::Weapon(Point  player)
+Weapon::Weapon(Point player , int vector_p)
 {
-	draw.x  = player.x + 32;
-	draw.x2 = player.x2 + 32;
-	draw.y  = player.y;
-	draw.y2 = player.y2 - 15;
-	start = clock();
+	p = player;
+	vectorr = vector_p;
+	if (vector_p == RIGHT)
+	{
+		p.x += 32 + 7;
+		p.x2 += 64 + 7;
+	}
+	else if (vector_p == LEFT)
+	{
+		p.x -= (64 + 7);
+		p.x2 -= (32 + 7);
+	}
+
+	image = LoadGraph(".\\image\\ken.png");
 }
 
 Weapon::~Weapon()
 {
+
 }
 
-void Weapon::Main()
+void Weapon::Move(Point speed , int vector)
 {
-	printfDx("two");
-	//while (start - clock() < 2000)
-	//{
-	//	printfDx("three");
-	//	Draw();
-	//}
+	if (vectorr == RIGHT) 
+	{
+		p.x += speed.x;
+		p.y += speed.y;
+		p.x2 += speed.x;
+		p.y2 += speed.y;
+	}
+	else if (vectorr == LEFT)
+	{
+		p.x -= speed.x;
+		p.y += speed.y;
+		p.x2 -= speed.x;
+		p.y2 += speed.y;
+	}
 }
 
 void Weapon::Draw()
 {
-	printfDx("fwo");
-	DrawBox(draw.x,draw.y,draw.x2,draw.y2,GetColor(255,0,0),true);
+	if (vectorr == RIGHT) DrawGraph(p.x, p.y, image, true);
+	if (vectorr == LEFT ) DrawTurnGraph(p.x, p.y, image, true);
 }
 
+Point Weapon::SetPoint() { return p;}

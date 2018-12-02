@@ -1,24 +1,58 @@
 #include <stdio.h>
-#include "DxLib.h"
 #include "Score.h"
 
 Score::Score()
 {
-	draw.x= 820;
-	draw.y = 32 * 19;
-	color = GetColor(255,0,0); 
+	p.x= 820;
+	p.y = 32 * 19;
+	combo = 0;
+	ratio = 1;
 	score = 0;
-	strcpy_s(value_str,"000000\0");
-	strcpy_s(score_str,"SCORE:\0");
-	strcat_s(score_str,value_str);
+	time_end = 0;
+	color = GetColor(255,255,56);
+	font[0] = CreateFontToHandle("EmbossedBlackWide",32,4,DX_FONTTYPE_EDGE);
+	font[1] = CreateFontToHandle("Cheese", 32, 5, DX_FONTTYPE_ANTIALIASING_EDGE_8X8);
 }
 
-int Score::Calculate()
+Score::~Score()
 {
-	return 0;
+	DeleteFontToHandle(font[0]);
+	DeleteFontToHandle(font[1]);
+}
+
+void Score::CalculateCombo(int temp)
+{
+	if (temp > 0)
+	{
+		time_end = GetNowCount() + 3000;
+		combo++;
+	}
+	ContinueCombo();
+	
+	if (combo < 5) ratio = 1;
+	if (combo > 5) ratio = 5;
+	if (combo > 15) ratio = 15;
+	score += temp * ratio;
+}
+
+bool Score::ContinueCombo()
+{
+	if (GetNowCount() < time_end)
+		return true;
+	else
+	{
+		combo = 0;
+		return false;
+	}
 }
 
 void Score::Draw()
 {
-	DrawString(draw.x,draw.y,score_str,color);
+	snprintfDx(value_str, 20, "%d", score);
+	strcpy_s(score_str, "Byte:\0");
+	DrawStringToHandle(p.x,p.y,score_str,color,font[1]);
+	DrawStringToHandle(p.x + 32 * 6,p.y,value_str,color,font[0]);
 }
+
+int Score::SetScore() { return score; }
+

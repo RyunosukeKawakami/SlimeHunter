@@ -1,14 +1,25 @@
 #pragma once
-#include <time.h>
-#include "UI.h"
+#include "Point.h"
+#include "DxLib.h"
 
-class Weapon : public UI {
+class Weapon{
 private:
-	clock_t start;
-
+	Point p;
+	int vectorr;
+	int image;
+	double angle;
+	enum {
+		RIGHT,
+		LEFT,
+		UP,
+		DOWN,
+		STOP
+	};
 public:
-	Weapon(Point player);
-	~Weapon();
-	void Main();
-	void Draw();
+	Weapon(Point, int vector);
+	virtual~Weapon();
+	void Move(Point speed ,int vector);
+	void Draw(); 
+	Point SetPoint();
 };
+

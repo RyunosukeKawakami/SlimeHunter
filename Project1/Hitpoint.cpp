@@ -1,38 +1,76 @@
 #include "Hitpoint.h"
-#include "DxLib.h"
 
 Hitpoint::Hitpoint()
 {
-    draw.x = 50;
-    draw.y = 32 * 19;
-    hp_max = 200;
+	length = 250;
+	height = 30;
+    p.x = 50;
+    p.y = 32 * 19;
+	p.y2 = p.y + height;
+	temp = p;
+    hp_max = 100;
     hp_now = hp_max; 
-    hp_per = 100;   
-    length = 250;
-    height = 30;
-    color  = GetColor(0,255,0); 
+    hp_per = 1;   
+    color  = GetColor(0,255,0);
+	old_p_hp = 100;
 }
 
-float Hitpoint::Calculate(float hp_per)
+void Hitpoint::Calculate(int player_hp)
 {
-    hp_per = hp_now / hp_max;
-    
+    hp_per = (float)player_hp / hp_max;
+	if (old_p_hp != player_hp)
+		Move();
+	old_p_hp = player_hp;
+
     if(hp_per >= 0.5) 
         color = GetColor(0,255,0);
-    if(hp_per < 0.5 && hp_per > 0.2) 
+    else if(hp_per < 0.5 && hp_per > 0.2) 
         color = GetColor(255,255,0);
-    if(hp_per <= 0.2)
+    else if(hp_per <= 0.2)
         color = GetColor(255,0,0);
-        
-    return hp_per;
+}
+
+void Hitpoint::ResetHitpoint(int player_hp)
+{
+}
+
+void Hitpoint::Move()
+{
+	int rand = GetRand(5);
+
+	switch (GetRand(3)) {
+	case 0:
+		p.x += rand;
+		p.y += rand;
+		p.x2 += rand;
+		p.y2 += rand;
+		break;
+	case 1:
+		p.x -= rand;
+		p.y += rand;
+		p.x2 -= rand;
+		p.y2 += rand;
+		break;
+	case 2:
+		p.x += rand;
+		p.y -= rand;
+		p.x2 += rand;
+		p.y2 -= rand;
+		break;
+	case 3:
+		p.x -= rand;
+		p.y -= rand;
+		p.x2 -= rand;
+		p.y2 -= rand;
+		break;
+	};
 }
 
 void Hitpoint::Draw()
 {
-    hp_per = Calculate(hp_per);
-    DrawString(draw.x - 20,draw.y - 2,"HP",GetColor(255,255,255));
-    DrawBoxAA(draw.x,draw.y,draw.x+(length*hp_per),draw.y+height,color,TRUE);
-    DrawBoxAA(draw.x,draw.y,draw.x+length,draw.y+height,GetColor(0,0,0),FALSE);
+    DrawString(p.x - 20,p.y - 2,"HP",GetColor(255,255,255));
+    DrawBoxAA(p.x,p.y,p.x+(length*hp_per),p.y2,color,TRUE);
+    DrawBoxAA(p.x,p.y,p.x+length,p.y2,GetColor(255,255,255),FALSE);
+
+	p = temp;
 }
-
-

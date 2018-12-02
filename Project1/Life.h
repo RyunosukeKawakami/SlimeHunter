@@ -5,12 +5,15 @@
 class Life : public UI{
 private:
     int life;
-   char value_str[10];
-   char x_str[10];
+	int font[2];
+   char value_str[20];
+   char x_str[20];
    char* result_str;
 public:
     Life();
+	~Life();
     void Draw();
+	void Calculate(int);
 };
 
 #endif

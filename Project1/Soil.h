@@ -1,17 +1,20 @@
-#pragma once
+#ifndef _SOIL_
+#define _SOIL_
 #include "Box.h"
 
 class Soil : public Box{
 private:
+	int r, g, b;
 public:
 	Soil(int x,int y){
 		color = GetColor(0,255,0);
-		draw.x = 32 * x;
-		draw.y = 32 * y;
-		draw.x2 = draw.x + 32;
-		draw.y2 = draw.y + 32;
+		p.x = 32 * x;
+		p.y = 32 * y;
+		p.x2 = p.x + 32;
+		p.y2 = p.y + 32;
 	}
 	void Draw() {
-		DrawBox(draw.x, draw.y, draw.x2, draw.y2, color, FALSE);
+		DrawBox(p.x, p.y, p.x2, p.y2, color, FALSE);
 	}
 };
+#endif

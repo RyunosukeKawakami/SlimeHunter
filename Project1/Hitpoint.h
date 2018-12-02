@@ -8,10 +8,15 @@ private:
   float hp_per;
     int length;
     int height;
+	int old_p_hp;
+	Point temp;
 
 public:
          Hitpoint();
-   float Calculate(float);
+    void Calculate(int player_hp);
+	void ResetHitpoint(int);
+	void Move();
     void Draw();
+	int SetHp();
     
 };

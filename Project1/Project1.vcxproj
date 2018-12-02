@@ -79,6 +79,7 @@
       <AdditionalIncludeDirectories>..\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\プロジェクトに追加すべきファイル_VC用;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -93,6 +94,7 @@
       <AdditionalIncludeDirectories>..\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\プロジェクトに追加すべきファイル_VC用;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -109,6 +111,7 @@
       <AdditionalIncludeDirectories>..\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -127,6 +130,7 @@
       <AdditionalIncludeDirectories>..\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -135,29 +139,68 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bird.cpp" />
+    <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Char.cpp" />
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Combo.cpp" />
+    <ClCompile Include="Count.cpp" />
     <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="DropScore.cpp" />
+    <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="GenerateMonster.cpp" />
+    <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="GSlime.cpp" />
     <ClCompile Include="Hitpoint.cpp" />
     <ClCompile Include="Life.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Mystring.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Ranking.cpp" />
+    <ClCompile Include="Ranking_Screen.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="Select.cpp" />
+    <ClCompile Include="Slime.cpp" />
+    <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="State_UI.cpp" />
+    <ClCompile Include="TheWorld.cpp" />
+    <ClCompile Include="VanishMonster.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bird.h" />
+    <ClInclude Include="Bomb.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="Char.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="Combo.h" />
+    <ClInclude Include="Count.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="DropScore.h" />
+    <ClInclude Include="GameOver.h" />
+    <ClInclude Include="GenerateMonster.h" />
+    <ClInclude Include="Ghost.h" />
+    <ClInclude Include="GSlime.h" />
     <ClInclude Include="Hitpoint.h" />
+    <ClInclude Include="Life.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="Mystring.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Ranking.h" />
+    <ClInclude Include="Ranking_Screen.h" />
     <ClInclude Include="Score.h" />
+    <ClInclude Include="Select.h" />
+    <ClInclude Include="Slime.h" />
     <ClInclude Include="Soil.h" />
+    <ClInclude Include="StartScreen.h" />
     <ClInclude Include="State_UI.h" />
+    <ClInclude Include="TheWorld.h" />
     <ClInclude Include="UI.h" />
+    <ClInclude Include="VanishMonster.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

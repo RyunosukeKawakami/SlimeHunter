@@ -15,7 +15,9 @@ private:
 
 public:
 	State_UI();
+	void Control(int , int);
 	void Draw();
+	int SetScore();
 };	
 
 #endif

@@ -3,7 +3,8 @@
 void Debug::Main()
 {
    DrawFrame();
-    Exit();
+   Stop();
+   Exit();
 }
 
 void Debug::DrawFrame()
@@ -20,6 +21,14 @@ void Debug::DrawFrame()
             }
         }
     }
+}
+
+void Debug::Stop()
+{
+	if (CheckHitKey(KEY_INPUT_A) != 0) flag = true;
+	if (CheckHitKey(KEY_INPUT_S) != 0) flag = false;
+
+	if (flag == true) WaitKey();
 }
 
 void Debug::Exit()

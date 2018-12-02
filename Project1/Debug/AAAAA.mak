@@ -9,14 +9,14 @@ CFLAG=-W  -3 -O2 -w -AT -pc -H -k -b- -v -y  -DDEBUG
 OUTDIR=-nDebug
 CINCS=
 TARGET=Debug\AAAAA.exe
-SRC1=C:\Users\kawao\Desktop\honki\Project1\State_UI.cpp
-OBJ1=Debug\State_UI.obj
-SRC2=C:\Users\kawao\Desktop\honki\Project1\Score.cpp
-OBJ2=Debug\Score.obj
-SRC3=C:\Users\kawao\Desktop\honki\Project1\Player.cpp
-OBJ3=Debug\Player.obj
-SRC4=C:\Users\kawao\Desktop\honki\Project1\main.cpp
-OBJ4=Debug\main.obj
+SRC1=C:\Users\kawao\Desktop\honki\Project1\main.cpp
+OBJ1=Debug\main.obj
+SRC2=C:\Users\kawao\Desktop\honki\Project1\State_UI.cpp
+OBJ2=Debug\State_UI.obj
+SRC3=C:\Users\kawao\Desktop\honki\Project1\Score.cpp
+OBJ3=Debug\Score.obj
+SRC4=C:\Users\kawao\Desktop\honki\Project1\Player.cpp
+OBJ4=Debug\Player.obj
 SRC5=C:\Users\kawao\Desktop\honki\Project1\Life.cpp
 OBJ5=Debug\Life.obj
 SRC6=C:\Users\kawao\Desktop\honki\Project1\Hitpoint.cpp
@@ -27,11 +27,13 @@ SRC8=C:\Users\kawao\Desktop\honki\Project1\Char.cpp
 OBJ8=Debug\Char.obj
 SRC9=C:\Users\kawao\Desktop\honki\Project1\Box.cpp
 OBJ9=Debug\Box.obj
+SRC10=C:\Users\kawao\Desktop\honki\Project1\World.cpp
+OBJ10=Debug\World.obj
 
 TARGET: $(TARGET)
 
-$(TARGET): $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4) $(OBJ5) $(OBJ6) $(OBJ7) $(OBJ8) $(OBJ9)
-    $(CC) $(CFLAG) -e$(TARGET) $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4) $(OBJ5) $(OBJ6) $(OBJ7) $(OBJ8) $(OBJ9)
+$(TARGET): $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4) $(OBJ5) $(OBJ6) $(OBJ7) $(OBJ8) $(OBJ9) $(OBJ10)
+    $(CC) $(CFLAG) -e$(TARGET) $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4) $(OBJ5) $(OBJ6) $(OBJ7) $(OBJ8) $(OBJ9) $(OBJ10)
 
 $(OBJ1): $(SRC1)
     $(CC) $(CFLAG) $(OUTDIR) $(CINCS) -c $(SRC1)
@@ -59,3 +61,6 @@ $(OBJ8): $(SRC8)
 
 $(OBJ9): $(SRC9)
     $(CC) $(CFLAG) $(OUTDIR) $(CINCS) -c $(SRC9)
+
+$(OBJ10): $(SRC10)
+    $(CC) $(CFLAG) $(OUTDIR) $(CINCS) -c $(SRC10)

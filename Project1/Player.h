@@ -1,35 +1,43 @@
-#ifndef _PLAYER_DEFINE_
-#define _PLAYER_DEFINE_
+#pragma once
 #include "Char.h"
+#include "World.h"
 #include "Weapon.h"
+#include "Collision.h"
+#include "Monster.h"
+
+class GenerateMonster;
+class Monster;
 
 class Player : public Char{
 private:
+	World w;
     Point speed;
-	Weapon* main;
-	bool attack_f;
-    int accel;
+	Weapon* weapon;
+	Collision* collision;
+	GenerateMonster* genemon;
     int life;
-    int hp;
-    int vector;
-    const int RIGHT_MAX;
-    const int LEFT_MAX;
-    const int DOWN_MAX;
-    enum{
-        RIGHT,
-        LEFT,
-        UP,
-        DOWN,
-        STOP 
-    };
+    int vectorr;
+	int floor;
+	int time_start;
+	int damage_sound;
+	char buf[256];
+	bool attack_f;
+	bool damage_f;
 
 public:
     Player();
-	void Main();
+	~Player();
+	void Main() {};
+	void Main(GenerateMonster*);
     void Draw();
     void Move();
     void Jump();
+	void ResetHitpoint();
+	void Damage(vector<Monster*>);
     void Attack();
-};
+	
+	int SetHitpoint();
+	int SetLife();
+	Point SetPoint();
 
-#endif
+};

@@ -1,18 +1,26 @@
-#pragma once
-#include <list>
+#ifndef _WORLD_
+#define _WORLD_
+#include <vector>
 #include "Box.h"
 #include "Soil.h"
 using namespace std;
 
+struct Map {
+	int map[20][38];
+};
+
 class World{
 private:
-	const int YOKO = 37;
-	const int TATE = 20;
-	int map[20][37];
-	list<Box*> box;
-	list<Box*>::iterator it;
+	int YOKO;
+    int TATE;
+	int map[20][38];
+	const int DOWN_MAX;
+	vector<Box*> box;
+	vector<Box*>::iterator it;
 public:
 	World();
 	void Draw();
+	int  Set(Point);
 };
 
+#endif
